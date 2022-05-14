@@ -5,7 +5,7 @@ from typing import Iterable, Mapping
 from .types import (Capability, LogLevel, OutboundMode, Policy, PolicyGroup,
                     RequestsType, Profile, Enabled, SetModuleStateRequest,
                     EvalScriptMockRequest, EvalCronScriptRequest, Script,
-                    ChangeDeviceRequest, Proxy, Polices)
+                    ChangeDeviceRequest, Proxy, Policies)
 from aiohttp import ClientSession, ClientResponse
 
 # class SurgeAPI:

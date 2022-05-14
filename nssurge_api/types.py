@@ -54,7 +54,7 @@ PolicyGroups = list[PolicyGroup]
 # class Policies(TypedDict):
 #     proxies: Proxies
 #     policy-groups: PolicyGroups
-Polices = TypedDict('Policies', {'proxies': Proxies, 'policy-groups': PolicyGroups}) # return of get polices
+Policies = TypedDict('Policies', {'proxies': Proxies, 'policy-groups': PolicyGroups}) # return of get polices
 
 
 # https://peps.python.org/pep-0589/
