@@ -21,6 +21,7 @@ keywords = ["nssurge", "api"]
 [tool.poetry.dependencies]
 python = "^3.10"
 aiohttp = "^3.8.1"
+typing-extensions = "^4.2.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
