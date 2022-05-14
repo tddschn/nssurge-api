@@ -5,7 +5,7 @@ from typing import Iterable, Mapping
 from .types import (Capability, LogLevel, OutboundMode, Policy, PolicyGroup,
                     RequestsType, Profile, Enabled, SetModuleStateRequest,
                     EvalScriptMockRequest, EvalCronScriptRequest, Script,
-                    ChangeDeviceRequest)
+                    ChangeDeviceRequest, Proxy, Polices)
 from aiohttp import ClientSession, ClientResponse
 
 # class SurgeAPI:
@@ -95,14 +95,18 @@ class SurgeAPIClient:
         body = {"policy": policy}
         return await self.post(path, body)
 
-    async def get_policy(self, policy: Policy | None = None):
+    async def get_policy(self, policy: Proxy | Policy | None = None):
         if policy is None:
             # GET /v1/policies
             path = '/v1/policies'
+            params = {}
         else:
             # GET /v1/policies/detail?policy_name=ProxyNameHere
-            path = f'/v1/policies/detail?policy_name={policy}'
-        return await self.get(path)
+            # path = f'/v1/policies/detail?policy_name={policy}'
+            # use params
+            path = '/v1/policies/detail'
+            params = {"policy_name": policy}
+        return await self.get(path, params)
 
     async def test_policy(self, policies: Iterable[Policy], url: str):
         path = '/v1/policies/test'
@@ -113,10 +117,14 @@ class SurgeAPIClient:
         if policy_group is None:
             # GET /v1/policy_groups
             path = '/v1/policy_groups'
+            params = {}
         else:
             # GET /v1/policy_groups/select?group_name=GroupNameHere
-            path = f'/v1/policy_groups/select?group_name={policy_group}'
-        return await self.get(path)
+            # path = f'/v1/policy_groups/select?group_name={policy_group}'
+            # use params
+            path = '/v1/policy_groups/select'
+            params = {"group_name": policy_group}
+        return await self.get(path, params)
 
     async def get_policy_group_test_results(self):
         path = '/v1/policy_groups/test_results'
@@ -244,8 +252,11 @@ class SurgeAPIClient:
     async def get_device_icon(self, icon_id):
         """Obtain the icon of a device. You may get the iconID from device.dhcpDevice.icon"""
         # GET /v1/devices/icon?id={iconID}
-        path = f'/v1/devices/icon?id={icon_id}'
-        return await self.get(path)
+        # path = f'/v1/devices/icon?id={icon_id}'
+        # use params
+        path = '/v1/devices/icon'
+        params = {"id": icon_id}
+        return await self.get(path, params)
 
     async def change_device(self, req: ChangeDeviceRequest):
         """
