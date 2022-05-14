@@ -108,9 +108,12 @@ class SurgeAPIClient:
             params = {"policy_name": policy}
         return await self.get(path, params)
 
-    async def test_policy(self, policies: Iterable[Policy], url: str):
+    async def test_policies(self, proxies: Iterable[Proxy], url: str | None = None):
         path = '/v1/policies/test'
-        body = {"policy_names": list(policies), "url": url}
+        if url is not None:
+            body = {"policy_names": list(proxies), "url": url}
+        else:
+            body = {"policy_names": list(proxies)}
         return await self.post(path, body)
 
     async def get_policy_group(self, policy_group: PolicyGroup | None = None):
@@ -146,14 +149,16 @@ class SurgeAPIClient:
         path = f'/v1/requests/{requests_type}'
         return await self.get(path)
 
-    async def kill_request(self, request_id: int | None = None):
+    # async def kill_request(self, request_id: int | None = None):
+    async def kill_request(self, request_id: int):
         # POST /v1/requests/kill
         # {"id": 100}
         path = '/v1/requests/kill'
-        if request_id is None:
-            body = {}
-        else:
-            body = {"id": request_id}
+        # if request_id is None:
+        #     body = {}
+        # else:
+            # body = {"id": request_id}
+        body = {"id": request_id}
         return await self.post(path, body)
 
     async def get_active_profile(self, mask_password: bool = True):
