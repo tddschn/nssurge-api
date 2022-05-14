@@ -14,26 +14,30 @@ else:
 # Capability = Literal['mitm', 'capture', 'rewrite', 'scripting', 'system_proxy',
 #                      'enhanced_mode']
 class Capability(str, Enum):
-    mitm = 'mitm'
-    capture = 'capture'
-    rewrite = 'rewrite'
-    scripting = 'scripting'
-    system_proxy = 'system_proxy'
-    enhanced_mode = 'enhanced_mode'
+    mitm = "mitm"
+    capture = "capture"
+    rewrite = "rewrite"
+    scripting = "scripting"
+    system_proxy = "system_proxy"
+    enhanced_mode = "enhanced_mode"
+
 
 # OutboundMode = Literal['direct', 'proxy', 'rule']
 
+
 class OutboundMode(str, Enum):
-    direct = 'direct'
-    proxy = 'proxy'
-    rule = 'rule'
+    direct = "direct"
+    proxy = "proxy"
+    rule = "rule"
+
 
 Policy = str
 PolicyGroup = str
 # RequestsType = Literal['recent', 'active']
 class RequestsType(str, Enum):
-    recent = 'recent'
-    active = 'active'
+    recent = "recent"
+    active = "active"
+
 
 Profile = str
 Module = str
@@ -41,10 +45,11 @@ Enabled = bool
 Script = str
 # LogLevel = Literal['verbose', 'info', 'notify', 'warning']
 class LogLevel(str, Enum):
-    verbose = 'verbose'
-    info = 'info'
-    notify = 'notify'
-    warning = 'warning'
+    verbose = "verbose"
+    info = "info"
+    notify = "notify"
+    warning = "warning"
+
 
 SetModuleStateRequest = dict[Module, Enabled]
 
@@ -54,7 +59,9 @@ PolicyGroups = list[PolicyGroup]
 # class Policies(TypedDict):
 #     proxies: Proxies
 #     policy-groups: PolicyGroups
-Policies = TypedDict('Policies', {'proxies': Proxies, 'policy-groups': PolicyGroups}) # return of get polices
+Policies = TypedDict(
+    "Policies", {"proxies": Proxies, "policy-groups": PolicyGroups}
+)  # return of get polices
 
 
 # https://peps.python.org/pep-0589/
@@ -66,6 +73,7 @@ class EvalScriptMockRequest(TypedDict):
     "timeout": 5
     }
     """
+
     script_text: str
     mock_type: str
     timeout: int
@@ -84,6 +92,7 @@ class ChangeDeviceRequest(TypedDict):
     "shouldHandledBySurge": true
     }
     """
+
     physicalAddress: str
     name: NotRequired[str]
     address: NotRequired[str]
