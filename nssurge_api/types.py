@@ -48,6 +48,14 @@ class LogLevel(str, Enum):
 
 SetModuleStateRequest = dict[Module, Enabled]
 
+Proxy = str
+Proxies = list[Proxy]
+PolicyGroups = list[PolicyGroup]
+# class Policies(TypedDict):
+#     proxies: Proxies
+#     policy-groups: PolicyGroups
+Polices = TypedDict('Policies', {'proxies': Proxies, 'policy-groups': PolicyGroups}) # return of get polices
+
 
 # https://peps.python.org/pep-0589/
 class EvalScriptMockRequest(TypedDict):
