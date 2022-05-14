@@ -33,12 +33,12 @@ class SurgeAPIClient:
     # @classmethod
     # async def create(cls, endpoint, api_key, session):
     # 	return cls(endpoint, api_key, session)
-    # async def __aenter__(self):
-    #     self.session = ClientSession()
-    #     return self
 
-    # async def __aexit__(self, exc_type, exc_val, exc_tb):
-    #     await self.session.close()
+    async def __aenter__(self):
+        return self
+
+    async def __aexit__(self, exc_type, exc_val, exc_tb):
+        await self.session.close()
 
     # def __del__(self):
     #     self.session.close()
