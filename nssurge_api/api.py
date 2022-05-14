@@ -133,7 +133,7 @@ class SurgeAPIClient:
         body = {"group_name": policy_group}
         return await self.post(path, body)
 
-    async def get_requests(self, requests_type: RequestsType = 'recent'):
+    async def get_requests(self, requests_type: RequestsType = RequestsType.recent):
         # GET /v1/requests/recent
         path = f'/v1/requests/{requests_type}'
         return await self.get(path)

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from typing import Literal
+from enum import Enum
 import sys
 
 # https://peps.python.org/pep-0655/#usage-in-python-3-11
@@ -10,17 +11,40 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import TypedDict, NotRequired
 
-Capability = Literal['mitm', 'capture', 'rewrite', 'scripting', 'system_proxy',
-                     'enhanced_mode']
-OutboundMode = Literal['direct', 'proxy', 'rule']
+# Capability = Literal['mitm', 'capture', 'rewrite', 'scripting', 'system_proxy',
+#                      'enhanced_mode']
+class Capability(str, Enum):
+    mitm = 'mitm'
+    capture = 'capture'
+    rewrite = 'rewrite'
+    scripting = 'scripting'
+    system_proxy = 'system_proxy'
+    enhanced_mode = 'enhanced_mode'
+
+# OutboundMode = Literal['direct', 'proxy', 'rule']
+
+class OutboundMode(str, Enum):
+    direct = 'direct'
+    proxy = 'proxy'
+    rule = 'rule'
+
 Policy = str
 PolicyGroup = str
-RequestsType = Literal['recent', 'active']
+# RequestsType = Literal['recent', 'active']
+class RequestsType(str, Enum):
+    recent = 'recent'
+    active = 'active'
+
 Profile = str
 Module = str
 Enabled = bool
 Script = str
-LogLevel = Literal['verbose', 'info', 'notify', 'warning']
+# LogLevel = Literal['verbose', 'info', 'notify', 'warning']
+class LogLevel(str, Enum):
+    verbose = 'verbose'
+    info = 'info'
+    notify = 'notify'
+    warning = 'warning'
 
 SetModuleStateRequest = dict[Module, Enabled]
 
