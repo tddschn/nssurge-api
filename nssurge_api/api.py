@@ -6,7 +6,7 @@ from .types import (Capability, LogLevel, OutboundMode, Policy, PolicyGroup,
                     RequestsType, Profile, Enabled, SetModuleStateRequest,
                     EvalScriptMockRequest, EvalCronScriptRequest, Script,
                     ChangeDeviceRequest)
-from aiohttp import ClientSession
+from aiohttp import ClientSession, ClientResponse
 
 # class SurgeAPI:
 # 	"""
@@ -43,26 +43,30 @@ class SurgeAPIClient:
     # def __del__(self):
     #     self.session.close()
 
-    async def get(self, path, params: Mapping[str, str] | None = None):
+    async def get(self,
+                  path,
+                  params: Mapping[str, str] | None = None) -> ClientResponse:
         get_headers = {
             "X-Key": self.api_key,
             "Accept": "*/*",
         }
         url = f"{self.endpoint}{path}"
-        async with self.session.get(url, headers=get_headers,
-                                    params=params) as resp:
-            return await resp.text()
+        # async with self.session.get(url, headers=get_headers,
+        #                             params=params) as resp:
+        #     return await resp.text()
+        return await self.session.get(url, headers=get_headers, params=params)
 
-    async def post(self, path, body):
+    async def post(self, path, body) -> ClientResponse:
         post_headers = {
             "X-Key": self.api_key,
             "Accept": "*/*",
             "Content-Type": "application/json",
         }
         url = f"{self.endpoint}{path}"
-        async with self.session.post(url, headers=post_headers,
-                                     json=body) as resp:
-            return await resp.text()
+        # async with self.session.post(url, headers=post_headers,
+        #                              json=body) as resp:
+        #     return await resp.text()
+        return await self.session.post(url, headers=post_headers, json=body)
 
     async def get_cap(self, cap: Capability):
         path = f"/v1/features/{cap}"
