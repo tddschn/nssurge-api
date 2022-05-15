@@ -171,7 +171,7 @@ class SurgeAPIClient:
         body = {"id": request_id}
         return await self.post(path, body)
 
-    async def get_active_profile(self, mask_password: bool = Trued):
+    async def get_active_profile(self, mask_password: bool = True):
         # GET /v1/profiles/current?sensitive=0
         path = "/v1/profiles/current"
         if mask_password:
