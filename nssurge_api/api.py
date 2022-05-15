@@ -34,10 +34,11 @@ class SurgeAPIClient:
     https://manual.nssurge.com/others/http-api.html
     """
 
-    def __init__(self, endpoint: str = "http://127.0.0.1:9999", api_key: str = ""):
+    def __init__(self, endpoint: str = "http://127.0.0.1:9999", api_key: str = "", trust_env: bool = False):
         self.endpoint: str = endpoint
         self.api_key: str = api_key
-        self.session: ClientSession = ClientSession()
+        # self.trust_env: bool = trust_env
+        self.session: ClientSession = ClientSession(trust_env=trust_env)
 
     # session: ClientSession
 
