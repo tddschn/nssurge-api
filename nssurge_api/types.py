@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-from typing import Literal
 from enum import Enum
 import sys
 

@@ -17,7 +17,6 @@ from .types import (
     Script,
     ChangeDeviceRequest,
     Proxy,
-    Policies,
 )
 from aiohttp import ClientSession, ClientResponse
 
