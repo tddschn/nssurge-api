@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "nssurge-api"
 version = "0.2.10"
-description = ""
+description = "NSSurge HTTP API for Python"
 authors = ["Xinyuan Chen <45612704+tddschn@users.noreply.github.com>"]
 license = "MIT"
 readme = "README.md"
@@ -11,7 +11,7 @@ classifiers = [
 	"Topic :: Internet :: WWW/HTTP",
 	"Operating System :: OS Independent"
 ]
-keywords = ["nssurge", "api"]
+keywords = ["nssurge", "api", "aiohttp"]
 
 [tool.poetry.scripts]
 
