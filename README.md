@@ -14,6 +14,7 @@ $ pip install nssurge-api
 
 ```python
 # source: https://github.com/tddschn/nssurge-cli/blob/master/nssurge_cli/cap_commands.py
+from nssurge_cli.types import OnOffToggleEnum
 from nssurge_api import SurgeAPIClient
 from nssurge_api.types import Capability
 import asyncio
