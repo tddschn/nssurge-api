@@ -8,8 +8,8 @@ readme = "README.md"
 homepage = "https://github.com/tddschn/nssurge-api"
 repository = "https://github.com/tddschn/nssurge-api"
 classifiers = [
-	"Topic :: Internet :: WWW/HTTP",
-	"Operating System :: OS Independent"
+    "Topic :: Internet :: WWW/HTTP",
+    "Operating System :: OS Independent",
 ]
 keywords = ["nssurge", "api", "aiohttp"]
 
@@ -19,12 +19,12 @@ keywords = ["nssurge", "api", "aiohttp"]
 "Bug Tracker" = "https://github.com/tddschn/nssurge-api/issues"
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.11"
 aiohttp = "^3.8.1"
 typing-extensions = "^4.2.0"
 
-[tool.poetry.dev-dependencies]
-pytest = "^6.2.5"
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.3.1"
 toml = "^0.10.2"
 yapf = "^0.32.0"
 better-exceptions = "^0.3.3"
