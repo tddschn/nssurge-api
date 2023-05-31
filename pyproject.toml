@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "nssurge-api"
-version = "0.2.14"
+version = "0.2.15"
 description = "NSSurge HTTP API for Python"
 authors = ["Xinyuan Chen <45612704+tddschn@users.noreply.github.com>"]
 license = "MIT"
