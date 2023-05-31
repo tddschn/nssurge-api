@@ -2,7 +2,7 @@
 
 # from dataclasses import dataclass
 from typing import Iterable, Mapping
-from .types import (
+from nssurge_api.types import (
     Capability,
     LogLevel,
     OutboundMode,
@@ -80,11 +80,11 @@ class SurgeAPIClient:
         return await self.session.post(url, headers=post_headers, json=body)
 
     async def get_cap(self, cap: Capability):
-        path = f"/v1/features/{cap}"
+        path = f"/v1/features/{cap.value}"
         return await self.get(path)
 
     async def set_cap(self, cap: Capability, value: Enabled):
-        path = f"/v1/features/{cap}"
+        path = f"/v1/features/{cap.value}"
         body = {"enabled": value}
         return await self.post(path, body)
 
@@ -94,7 +94,7 @@ class SurgeAPIClient:
 
     async def set_outbound_mode(self, mode: OutboundMode):
         path = "/v1/outbound"
-        body = {"mode": mode}
+        body = {"mode": mode.value}
         return await self.post(path, body)
 
     async def get_global_policy(self):
@@ -156,7 +156,7 @@ class SurgeAPIClient:
 
     async def get_requests(self, requests_type: RequestsType = RequestsType.recent):
         # GET /v1/requests/recent
-        path = f"/v1/requests/{requests_type}"
+        path = f"/v1/requests/{requests_type.value}"
         return await self.get(path)
 
     # async def kill_request(self, request_id: int | None = None):
@@ -315,7 +315,7 @@ class SurgeAPIClient:
         # POST /v1/log/level
         # {"level": "info"}
         path = "/v1/log/level"
-        body = {"level": log_level}
+        body = {"level": log_level.value}
         return await self.post(path, body)
 
 
