@@ -18,7 +18,11 @@ from nssurge_api.types import (
     ChangeDeviceRequest,
     Proxy,
 )
-from aiohttp import ClientSession, ClientResponse
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from aiohttp import ClientSession, ClientResponse
 
 # class SurgeAPI:
 # 	"""
@@ -34,6 +38,7 @@ class SurgeAPIClient:
     """
 
     def __init__(self, endpoint: str = "http://127.0.0.1:9999", api_key: str = "", trust_env: bool = False):
+        from aiohttp import ClientSession
         self.endpoint: str = endpoint
         self.api_key: str = api_key
         # self.trust_env: bool = trust_env
@@ -56,7 +61,7 @@ class SurgeAPIClient:
 
     async def get(
         self, path, params: Mapping[str, str] | None = None
-    ) -> ClientResponse:
+    ) -> 'ClientResponse':
         get_headers = {
             "X-Key": self.api_key,
             "Accept": "*/*",
@@ -67,7 +72,7 @@ class SurgeAPIClient:
         #     return await resp.text()
         return await self.session.get(url, headers=get_headers, params=params)
 
-    async def post(self, path, body) -> ClientResponse:
+    async def post(self, path, body) -> 'ClientResponse':
         post_headers = {
             "X-Key": self.api_key,
             "Accept": "*/*",
