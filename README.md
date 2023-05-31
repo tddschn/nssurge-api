@@ -2,6 +2,20 @@
 
 Python implementation of the [Surge HTTP API spec](https://manual.nssurge.com/others/http-api.html) client using `aiohttp`.
 
+You can use it to get/set Surge rules / policies / proxy groups, get recent requests / events and much more. 
+
+This projects fully implements the [Surge HTTP API spec](https://manual.nssurge.com/others/http-api.html).
+
+If you're looking for a command line tool to interact with your running Surge app, check out [NSSurge CLI](https://github.com/tddschn/nssurge-cli).
+
+- [NSSurge Python API Client](#nssurge-python-api-client)
+  - [Installation](#installation)
+    - [pip](#pip)
+  - [Usage](#usage)
+  - [Develop](#develop)
+  - [See also](#see-also)
+
+
 ## Installation
 
 ### [pip](https://pypi.org/project/nssurge-api/)
@@ -45,3 +59,8 @@ $ git clone https://github.com/tddschn/nssurge-api.git
 $ cd nssurge-api
 $ poetry install
 ```
+
+## See also
+
+- [NSSurge CLI](https://github.com/tddschn/nssurge-cli): Command line Surge HTTP API Client built with this library
+- [Surge HTTP API spec](https://manual.nssurge.com/others/http-api.html)
